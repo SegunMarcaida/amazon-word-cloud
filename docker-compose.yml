@@ -7,7 +7,14 @@ services:
     ports:
       - "6379:6379"
     restart: unless-stopped
-
+  app:
+    build: .
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - ./data:/app/data
+    ports:
+      - "8080:8080"
 volumes:
   redis-data:
   db_data:
